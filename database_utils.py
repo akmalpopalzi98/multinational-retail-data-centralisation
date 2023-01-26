@@ -1,7 +1,7 @@
 #%%
 import yaml
 from yaml.loader import SafeLoader
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, inspect
 
 #%%
 class DatabaseConnector():
@@ -19,6 +19,11 @@ class DatabaseConnector():
         if engine.connect():
             print('Connection Sucessfull')
         return engine
+
+    def list_db_tables(self):
+        inspector = inspect(self.init_db_engine())
+        return inspector.get_table_names()
+
 
 
 
