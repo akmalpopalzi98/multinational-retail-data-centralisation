@@ -16,8 +16,6 @@ class DatabaseConnector():
     def init_db_engine(self):
         data_2 = self.read_db_creds()
         engine = create_engine(f"postgresql+psycopg2://{data_2['RDS_USER']}:{data_2['RDS_PASSWORD']}@{data_2['RDS_HOST']}:{data_2['RDS_PORT']}/{data_2['RDS_DATABASE']}")
-        if engine.connect():
-            print('Connection Sucessfull')
         return engine
 
     def list_db_tables(self):
