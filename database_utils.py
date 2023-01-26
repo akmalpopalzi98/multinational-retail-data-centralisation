@@ -19,8 +19,13 @@ class DatabaseConnector():
         return engine
 
     def list_db_tables(self):
-        inspector = inspect(self.init_db_engine())
+        inspector = inspect(self.engine)
         return inspector.get_table_names()
+
+    def upload_to_db(self,dataframe,table_name):
+        dataframe.to_sql(table_name,self.engine)
+
+
 
 
 
