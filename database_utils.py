@@ -23,7 +23,15 @@ class DatabaseConnector():
         return inspector.get_table_names()
 
     def upload_to_db(self,dataframe,table_name):
-        dataframe.to_sql(table_name,self.engine)
+        DATABASE_TYPE = 'postgresql'
+        DBAPI = 'psycopg2'
+        HOST = 'localhost'
+        USER = 'postgres'
+        PASSWORD = 'P0037979'
+        DATABASE = 'Sales_Data'
+        PORT = 5432
+        engine_2 = create_engine(f"{DATABASE_TYPE}+{DBAPI}://{USER}:{PASSWORD}@{HOST}:{PORT}/{DATABASE}")
+        dataframe.to_sql(table_name,engine_2,if_exists = 'replace')
 
 
 
