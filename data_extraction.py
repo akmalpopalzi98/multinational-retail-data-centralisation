@@ -6,7 +6,7 @@ import pandas as pd
 
 
 class DataExtractor():
-    def _init__(self, database_connector_instance, table_name):
+    def __init__(self, database_connector_instance, table_name):
         self.database_connector_instance = database_connector_instance
         self.table_name = table_name
 
