@@ -1,3 +1,4 @@
+#%%
 import data_extraction,database_utils
 from data_extraction import DataExtractor
 from database_utils import DatabaseConnector
@@ -20,6 +21,8 @@ class DataCleaning():
                 messy_first_names.append(item)
         clean_2_users = clean_1_no_null[~clean_1_no_null.first_name.isin(messy_first_names)]
         clean_3_country_code = clean_2_users.replace('GGB','GB')
+        cleaned_data = clean_3_country_code
+        return cleaned_data
 
                 
 
