@@ -2,6 +2,8 @@
 import database_utils
 from database_utils import DatabaseConnector
 import pandas as pd
+import tabula as tb
+
 
 
 
@@ -17,6 +19,21 @@ class DataExtractor():
             return table
         else:
             return 'Table not in Database'
+
+
+    def retrieve_pdf_data(self,link):
+        pdf_data = tb.read_pdf(link,pages = 'all')
+        df_pdf = pd.concat(pdf_data)
+        return df_pdf
+
+
+
+        
+
+
+
+
+
 
     
 
