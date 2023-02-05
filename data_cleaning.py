@@ -24,7 +24,24 @@ class DataCleaning():
         cleaned_data = clean_3_country_code
         return cleaned_data
 
-                
+    
+    def clean_card_data(self):
+        remove_null = self.dataframe[self.dataframe.card_number != 'NULL']
+        date_errors = []
+        for item in remove_null.expiry_date:
+            if item.isalpha():
+                date_errors.append(item)
+        remove_date_error = remove_null.copy()
+        for item in date_errors:
+            remove_date_error.drop(remove_date_error.loc[remove_date_error['expiry_date']==item].index, inplace=True)
+
+        
+        
+
+
+
+
+
 
 
 
