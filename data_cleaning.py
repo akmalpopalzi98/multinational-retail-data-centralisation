@@ -7,6 +7,16 @@ from dateutil import parser
 #%%
 def has_numbers(inputString):
     return any(char.isdigit() for char in inputString)
+
+
+
+import datetime
+def validate(date_text):
+        try:
+            if datetime.date.fromisoformat(date_text):
+                  return True
+        except ValueError:
+              return date_text
 #%%
 class DataCleaning():
     def __init__(self,dataframe):
@@ -32,8 +42,26 @@ class DataCleaning():
             if item.isalpha():
                 date_errors.append(item)
         remove_date_error = remove_null.copy()
+
         for item in date_errors:
             remove_date_error.drop(remove_date_error.loc[remove_date_error['expiry_date']==item].index, inplace=True)
+        date_format_errors = []
+        for item in self.dataframe.date_payment_confirmed:
+             if validate(item):
+                  pass
+             else:
+                  date_format_errors.append(item)
+
+        clean_date_format = remove_date_error.copy()
+        for item in date_format_errors:
+             clean_date_format.drop(clean_date_format.loc[clean_date_format['date_payment_confirmed']==item].index, inplace=True)
+
+        return clean_date_format
+    
+    
+             
+
+        
 
         
         
