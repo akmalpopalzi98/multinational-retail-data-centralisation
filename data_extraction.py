@@ -9,7 +9,7 @@ import tabula as tb
 
 
 class DataExtractor():
-    def __init__(self, database_connector_instance, table_name):
+    def __init__(self, database_connector_instance = None, table_name = None):
         self.database_connector_instance = database_connector_instance
         self.table_name = table_name
 
