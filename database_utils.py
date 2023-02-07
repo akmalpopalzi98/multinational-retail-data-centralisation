@@ -2,6 +2,7 @@
 import yaml
 from yaml.loader import SafeLoader
 from sqlalchemy import create_engine, inspect
+import data_extraction,data_cleaning
 from data_extraction import DataExtractor
 from data_cleaning import DataCleaning
 
@@ -34,18 +35,6 @@ class DatabaseConnector():
         PORT = 5432
         engine_2 = create_engine(f"{DATABASE_TYPE}+{DBAPI}://{USER}:{PASSWORD}@{HOST}:{PORT}/{DATABASE}")
         dataframe.to_sql(table_name,engine_2,if_exists = 'replace')
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
