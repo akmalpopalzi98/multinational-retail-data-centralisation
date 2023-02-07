@@ -2,10 +2,12 @@
 import yaml
 from yaml.loader import SafeLoader
 from sqlalchemy import create_engine, inspect
+from data_extraction import DataExtractor
+from data_cleaning import DataCleaning
 
 #%%
 class DatabaseConnector():
-    def __init__(self,file_name):
+    def __init__(self,file_name = 'No File name'):
         self.file_name = file_name
 
     def read_db_creds(self):
@@ -19,7 +21,7 @@ class DatabaseConnector():
         return engine
 
     def list_db_tables(self):
-        inspector = inspect(self.engine)
+        inspector = inspect(self.init_db_engine())
         return inspector.get_table_names()
 
     def upload_to_db(self,dataframe,table_name):
