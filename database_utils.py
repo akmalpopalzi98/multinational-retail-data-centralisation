@@ -7,7 +7,7 @@ from data_cleaning import DataCleaning
 
 #%%
 class DatabaseConnector():
-    def __init__(self,file_name = 'No File name'):
+    def __init__(self,file_name = None):
         self.file_name = file_name
 
     def read_db_creds(self):
