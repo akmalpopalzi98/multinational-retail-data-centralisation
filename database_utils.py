@@ -2,9 +2,6 @@
 import yaml
 from yaml.loader import SafeLoader
 from sqlalchemy import create_engine, inspect
-import data_extraction,data_cleaning
-from data_extraction import DataExtractor
-from data_cleaning import DataCleaning
 
 #%%
 class DatabaseConnector():
