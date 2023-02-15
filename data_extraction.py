@@ -1,9 +1,8 @@
 #%%
-import database_utils
-from database_utils import DatabaseConnector
-import data_cleaning
 import pandas as pd
 import tabula as tb
+import json
+import requests
 
 
 
@@ -26,6 +25,16 @@ class DataExtractor():
         pdf_data = tb.read_pdf(link,pages = 'all')
         df_pdf = pd.concat(pdf_data)
         return df_pdf
+    
+
+    def list_number_of_stores(self,endpoint,dictionary):
+        r = requests.get(endpoint,headers = dictionary)
+        output = r.json()
+        return output['number_stores']
+    
+
+    def retrieve_stores_data(self,endpoint2):
+        pass
 
 
 

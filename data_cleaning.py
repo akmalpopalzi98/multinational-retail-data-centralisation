@@ -1,7 +1,5 @@
 #%%
-import data_extraction,database_utils
-from data_extraction import DataExtractor
-from database_utils import DatabaseConnector
+
 import pandas as pd
 from dateutil import parser
 #%%
