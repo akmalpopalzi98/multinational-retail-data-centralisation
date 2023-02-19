@@ -34,6 +34,7 @@ class DataExtractor():
     
 
     def retrieve_stores_data(self,endpoint2):
+        #incompelete
         pass
 
 
